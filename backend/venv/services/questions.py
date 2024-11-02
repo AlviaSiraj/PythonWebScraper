@@ -11,7 +11,8 @@ from bs4 import BeautifulSoup
 load_dotenv()
 
 # Access your API key
-#TO USE UNCOMMENT KEY IN .env FILE
+#TO USE, GET AN API KEY FROM OPENAI AND ADD IT TO THE .env FILE 
+#(i had to pay for mine)
 OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 client = OpenAI( api_key=OPENAI_API_KEY)
 
@@ -50,11 +51,13 @@ Return the questions and answer choices in JSON format like this:
     retries = 5  # You can increase the number of retries
     wait_time = 5  # Start with 5 seconds between retries
     for attempt in range(retries):
+        print(prompt)
         try:
             response = client.chat.completions.create(
                 model="gpt-4-turbo",  # or your intended model
                 messages=[{"role": "user", "content": prompt}]
             )
+            print(response)
             
             # Correctly access the content of the response
             response_content = response.choices[0].message.content.strip()
