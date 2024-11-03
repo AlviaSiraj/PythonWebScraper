@@ -100,7 +100,7 @@ npm start
 
 This is an application where a user enters a url and the website content is scraped and summarized to return AI generated questions based on the content provided. The user can answer the questions and they get saved into the AWS RDS database.
 
-<img src="/frontend/webscraper/images/project_capture1.png" alt="Example Screenshot1" height="100">
-<img src="/frontend/webscraper/images/project_capture2.png" alt="Example Screenshot1" height="100">
-<img src="/frontend/webscraper/images/project_capture3.png" alt="Example Screenshot1" height="100">
+<img src="/frontend/webscraper/images/project_capture1.png" alt="Example Screenshot1" height="300">
+<img src="/frontend/webscraper/images/project_capture2.png" alt="Example Screenshot1" height="300">
+<img src="/frontend/webscraper/images/project_capture3.png" alt="Example Screenshot1" height="300">
 <img src="/frontend/webscraper/images/project_capture4.png" alt="Example Screenshot1" height="100">
