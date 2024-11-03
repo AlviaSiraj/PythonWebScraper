@@ -7,12 +7,13 @@ import { SubmitModal } from "./submitModal";
 
 export const Questions = () => {
   const dispatch = useDispatch();
-  const { loading, data, error } = useSelector((state) => state.reducer);
+  const { loading, data, error } = useSelector((state) => state.scrapeReducer);
   const [questions, setQuestions] = useState([]);
   const [questionsLoading, setQuestionsLoading] = useState(false); // State for questions loading
   const [showModal, setShowModal] = useState(false); // State for modal visibility
   const [loadError, setLoadError] = useState(false); // State for handling load failure
   const [selectedAnswers, setSelectedAnswers] = useState({});
+  const [curatedQuestions, setCuratedQuestions] = useState({});
 
   //  Does not do anything, just for completion purposes
   const handleShowModal = () => setShowModal(true); // Show modal
@@ -30,7 +31,7 @@ export const Questions = () => {
           headings += heading + " ";
         });
       });
-
+      //console.log(data.category);
       const fetchQuestions = async () => {
         try {
           setQuestionsLoading(true);
@@ -39,6 +40,13 @@ export const Questions = () => {
           console.log("Fetched questions:", result);
           if (result && result.questions) {
             setQuestions(result);
+
+            result.questions.forEach((question, index) => {
+              setCuratedQuestions((prevQuestions) => ({
+                ...prevQuestions,
+                [index]: question.question,
+              }));
+            });
           } else if (result.error) {
             return <p>Failed to scrape site, try again in a minute</p>;
           }
@@ -59,6 +67,7 @@ export const Questions = () => {
       ...prevAnswers,
       [index]: option,
     }));
+    console.log(index);
   };
 
   if (loading || questionsLoading) {
@@ -90,7 +99,6 @@ export const Questions = () => {
             <p>
               {index + 1}. {question.question}
             </p>
-
             {question.options.map((option, i) => (
               <div key={i}>
                 <label>
@@ -108,7 +116,7 @@ export const Questions = () => {
           </div>
         ))}
         {/* {questions.questions.length > 0 && ( */}
-        {console.log("Button", questions)}
+
         <button
           className="btn btn-primary mt-4"
           type="button"
@@ -124,6 +132,8 @@ export const Questions = () => {
         handleClose={handleCloseModal}
         handleConfirm={handleSubmit}
         answers={selectedAnswers}
+        questions={curatedQuestions}
+        category={data.category}
       />
     </>
   );

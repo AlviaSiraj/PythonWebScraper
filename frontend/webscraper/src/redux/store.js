@@ -5,7 +5,7 @@ import questionReducer from "./questionReducer";
 const store = configureStore({
   reducer: {
     questions: questionReducer,
-    reducer: reducer,
+    scrapeReducer: reducer,
     // other reducers if you have them
   },
 });

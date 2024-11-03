@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 export const ScrapeDisplay = () => {
-  const { loading, data, error } = useSelector((state) => state.reducer);
+  const { loading, data, error } = useSelector((state) => state.scrapeReducer);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
   if (!data) return null;

@@ -1,8 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modal, Button } from "react-bootstrap";
+import { useSelector } from "react-redux";
 //this page is just for closure purposes, to make the website flow better
 //nothing as of now is being done with the answers
-export const SubmitModal = ({ show, handleClose, handleConfirm, answers }) => {
+export const SubmitModal = ({
+  show,
+  handleClose,
+  handleConfirm,
+  answers,
+  questions,
+  category,
+}) => {
+  // const { loading, data, error } = useSelector(
+  //   (state) => state.questionReducer
+  // );
+  console.log("category", category);
+
   return (
     <Modal show={show} onHide={handleClose}>
       <Modal.Header closeButton>
