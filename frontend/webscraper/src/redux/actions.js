@@ -31,3 +31,20 @@ export const getQuestions = (content, headings) => async (dispatch) => {
     return undefined;
   }
 };
+
+export const postAnswers = (category, question, answer) => async (dispatch) => {
+  dispatch({ type: "ANSWERS_REQUEST" });
+  try {
+    const response = await axios.post("http://127.0.0.1:5000/api/answers", {
+      category,
+      question,
+      answer,
+    });
+    dispatch({ type: "ANSWERS_SUCCESS", payload: response.data });
+    console.log("answers added in DB", response.data);
+    return response.data;
+  } catch (error) {
+    dispatch({ type: "ANSWERS_FAILURE", payload: error.message });
+    return undefined;
+  }
+};

@@ -18,10 +18,7 @@ export const Questions = () => {
   //  Does not do anything, just for completion purposes
   const handleShowModal = () => setShowModal(true); // Show modal
   const handleCloseModal = () => setShowModal(false); // Hide modal
-  const handleSubmit = () => {
-    // Handle submission logic here (e.g., send answers to server)
-    setShowModal(false); // Close the modal after submission
-  };
+
   useEffect(() => {
     if (!loading && data) {
       const content = data.content.join(" ");
@@ -38,6 +35,10 @@ export const Questions = () => {
           setLoadError(false); // Reset error state before fetching
           const result = await dispatch(getQuestions(content, headings));
           console.log("Fetched questions:", result);
+          if (result.error) {
+            console.log("ERRORORROOROR");
+            return <p>Failed to scrape site, try again in a minute</p>;
+          }
           if (result && result.questions) {
             setQuestions(result);
 
@@ -47,8 +48,6 @@ export const Questions = () => {
                 [index]: question.question,
               }));
             });
-          } else if (result.error) {
-            return <p>Failed to scrape site, try again in a minute</p>;
           }
         } catch (error) {
           console.error("Error fetching questions:", error);
@@ -130,7 +129,6 @@ export const Questions = () => {
       <SubmitModal
         show={showModal}
         handleClose={handleCloseModal}
-        handleConfirm={handleSubmit}
         answers={selectedAnswers}
         questions={curatedQuestions}
         category={data.category}

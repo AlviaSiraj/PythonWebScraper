@@ -51,13 +51,11 @@ Return the questions and answer choices in JSON format like this:
     retries = 5  # You can increase the number of retries
     wait_time = 5  # Start with 5 seconds between retries
     for attempt in range(retries):
-        print(prompt)
         try:
             response = client.chat.completions.create(
                 model="gpt-4-turbo",  # or your intended model
                 messages=[{"role": "user", "content": prompt}]
             )
-            print(response)
             
             # Correctly access the content of the response
             response_content = response.choices[0].message.content.strip()
