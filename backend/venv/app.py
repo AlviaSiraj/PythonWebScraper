@@ -3,6 +3,7 @@ from flask_cors import CORS
 from controllers.scrape_controller import scrape_blueprint
 from controllers.questions_controller import questions_blueprint
 from controllers.answers_controller import answers_blueprint
+import os
 
 app=Flask(__name__)
 CORS(app) #enable cross-origin requests
@@ -13,4 +14,4 @@ app.register_blueprint(questions_blueprint, url_prefix='/api')
 app.register_blueprint(answers_blueprint, url_prefix='/api')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
