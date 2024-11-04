@@ -9,7 +9,7 @@ export const scrapeWebsite = (url) => async (dispatch) => {
 
   try {
     const response = await axios.post(
-      "https://pythonwebscraper.onrender.com/scrape",
+      "https://pythonwebscraperbackend.onrender.com/scrape",
       { url }
     );
     dispatch({ type: SCRAPE_SUCCESS, payload: response.data });
@@ -24,7 +24,7 @@ export const getQuestions = (content, headings) => async (dispatch) => {
   dispatch({ type: "QUESTIONS_REQUEST" });
   try {
     const response = await axios.post(
-      "https://pythonwebscraper.onrender.com/api/generate-questions",
+      "https://pythonwebscraperbackend.onrender.com/api/generate-questions",
       { content, headings }
     );
     dispatch({ type: "QUESTIONS_SUCCESS", payload: response.data });
@@ -39,7 +39,7 @@ export const postAnswers = (category, question, answer) => async (dispatch) => {
   dispatch({ type: "ANSWERS_REQUEST" });
   try {
     const response = await axios.post(
-      "https://pythonwebscraper.onrender.com/api/answers",
+      "https://pythonwebscraperbackend.onrender.com/api/answers",
       {
         category,
         question,
