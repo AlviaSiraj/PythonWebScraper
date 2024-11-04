@@ -8,7 +8,10 @@ export const scrapeWebsite = (url) => async (dispatch) => {
   dispatch({ type: SCRAPE_REQUEST });
 
   try {
-    const response = await axios.post("http://127.0.0.1:5000/scrape", { url });
+    const response = await axios.post(
+      "https://pythonwebscraper.onrender.com/scrape",
+      { url }
+    );
     dispatch({ type: SCRAPE_SUCCESS, payload: response.data });
     return response.data;
   } catch (error) {
@@ -21,7 +24,7 @@ export const getQuestions = (content, headings) => async (dispatch) => {
   dispatch({ type: "QUESTIONS_REQUEST" });
   try {
     const response = await axios.post(
-      "http://127.0.0.1:5000/api/generate-questions",
+      "https://pythonwebscraper.onrender.com/api/generate-questions",
       { content, headings }
     );
     dispatch({ type: "QUESTIONS_SUCCESS", payload: response.data });
@@ -35,11 +38,14 @@ export const getQuestions = (content, headings) => async (dispatch) => {
 export const postAnswers = (category, question, answer) => async (dispatch) => {
   dispatch({ type: "ANSWERS_REQUEST" });
   try {
-    const response = await axios.post("http://127.0.0.1:5000/api/answers", {
-      category,
-      question,
-      answer,
-    });
+    const response = await axios.post(
+      "https://pythonwebscraper.onrender.com/api/answers",
+      {
+        category,
+        question,
+        answer,
+      }
+    );
     dispatch({ type: "ANSWERS_SUCCESS", payload: response.data });
     console.log("answers added in DB", response.data);
     return response.data;

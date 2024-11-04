@@ -73,7 +73,7 @@ python app.py
 To test using postman or insomnia use this url
 
 ```python
-http://127.0.0.1:5000/{endpoint}
+https://pythonwebscraper.onrender.com/{endpoint}
 ```
 
 ### Frontend Installation
