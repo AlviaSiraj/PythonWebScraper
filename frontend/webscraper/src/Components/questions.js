@@ -37,7 +37,11 @@ export const Questions = () => {
           console.log("Fetched questions:", result);
           if (result.error) {
             console.log("ERRORORROOROR");
-            return <p>Failed to scrape site, try again in a minute</p>;
+            return (
+              <div className="text-center">
+                <p>Failed to scrape site, try again in a minute</p>;
+              </div>
+            );
           }
           if (result && result.questions) {
             setQuestions(result);

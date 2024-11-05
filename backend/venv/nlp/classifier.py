@@ -13,6 +13,7 @@ CATEGORY_KEYWORDS = {
     "Science": ["science", "research", "discovery", "experiment", "scientist"],
     "Art": ["art", "painting", "sculpture", "gallery", "artist"],
     "Fashion": ["fashion", "style", "design", "clothing", "trend"],
+    "Anime": ["anime", "manga", "otaku", "cartoon", "animation", "cosplay", "Japan"]
     }
 
 def classify_content(content,headings):

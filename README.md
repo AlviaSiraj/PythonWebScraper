@@ -76,6 +76,12 @@ To test using postman or insomnia use this url
 https://pythonwebscraperbackend.onrender.com/{endpoint}
 ```
 
+for local:
+
+```python
+http://127.0.0.1:5000/{endpoint}
+```
+
 ### Frontend Installation
 
 Navigate to frontend
@@ -89,6 +95,11 @@ install all npm packages
 ```bash
 npm install
 ```
+
+if you want to run locally navigate to redux/actions.js
+and replace the
+`python https://pythonwebscraperbackend.onrender.com `
+with the local call:`python http://127.0.0.1:5000`
 
 run frontend
 
@@ -104,3 +115,6 @@ This is an application where a user enters a url and the website content is scra
 <img src="/frontend/webscraper/images/project_capture2.png" alt="Example Screenshot1" height="300">
 <img src="/frontend/webscraper/images/project_capture3.png" alt="Example Screenshot1" height="300">
 <img src="/frontend/webscraper/images/project_capture4.png" alt="Example Screenshot1" height="100">
+
+for the deployed server (runs very slowly due to free tier)
+https://pythonwebscraperfrontend.onrender.com/
